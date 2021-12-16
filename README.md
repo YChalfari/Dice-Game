@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Dice game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My first React app!
 
-## Available Scripts
+## Netlify
 
-In the project directory, you can run:
+## Pseudo code:
 
-### `npm start`
+### The app will include the following general features:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- PlayerObject class:
+  - name: string
+  - score: int
+  - isActive: bool
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### The app will include the following Components:
 
-### `npm test`
+- App component that holds the whole game logic
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - state:
 
-### `npm run build`
+    - winningScore: int (default: 100)
+    - players: array of PlayerObjects
+    - currentPlayer: PlayerObject / index in players array
+    - currentRoll: int
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - render:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  ```
+      <div>
+          <ButtonComponent value='New Game'/>
+          <PlayerComponent value='Player1' propPlayer={PlayerObject}/>
+          <DiceComponent value='Dice'/>
+          <PlayerComponent value='Player2' propPlayer={PlayerObject}/>
+          <ButtonComponent value='Roll Dice'/>
+          <ButtonComponent value='Hold'/>
+          <input type="text" value='100'/>
+      </div>
+  ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - functions:
+    - renderGame: function
+    - renderRollDice: function
+    - renderNewGame: function
+    - renderGameOver: function
+    - onHoldClick: function -> saves the current player's score and switches to the next player(changes state's currentPlayer)
 
-### `npm run eject`
+- Player component that holds the player's state
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  - state:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    - player: PlayerObject
+    - isActive: bool
+    - currentRoll: int
+    - currentCumulativeRoll: int
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  - render:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  ```
+      <div className="player">
+          <div className="player-name">
+              <h2>{player.name}</h2>
+          </div>
+          <div className="player-score">
+              <h3>{currentCumulativeRoll}</h3>
+          </div>
+          {/*
+              <div className="player-dice">
+                  <h3>Dice: {player.dice}</h3>
+              </div>
+          */}
+          <div className="player-roll">
+              <h3>Current Roll</h3>
+              <span>{currentRoll}</span>
+          </div>
+    </div>
+  ```
 
-## Learn More
+  - functions:
+    - checkRoll: function
+    - renderContent: function
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Dice component that holds the dice's state
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - state
 
-### Code Splitting
+    - roll_1: int
+    - roll_2: int
+    - sum: int
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  - render:
 
-### Analyzing the Bundle Size
+    ```
+        <div className=`die-image`>
+            <img src={`/images/dice-${roll_1}.png`} alt="dice-1" />
+        </div>
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  - functions:
+    - updateRollInParent: function
 
-### Making a Progressive Web App
+## Time management: total ~ 18 hours
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+|       Task       | Estimated Time |
+| :--------------: | :------------: |
+|   Pseudo Code    |   2.5 hours    |
+|    Components    |
+|    renderGame    |     1 hour     |
+|  renderRollDice  |    1.5 hour    |
+|  renderNewGame   |    0.5 hour    |
+|  renderGameOver  |    0.5 hour    |
+|   onHoldClick    |    0.5 hour    |
+| Components Total |    4 hours     |
+|     Styling      |   5-6 hours    |
+|     Testing      |    2 hours     |
+|    Deployment    |   0.5 hours    |
