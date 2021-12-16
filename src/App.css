@@ -5,5 +5,14 @@
 }
 
 .App {
+  margin: 0 auto;
   text-align: center;
+  width: 95%;
+  height: 100vh;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 15%;
 }

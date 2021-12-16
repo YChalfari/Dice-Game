@@ -1,0 +1,17 @@
+.game-board {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 5% 0;
+  height: 85%;
+}
+
+.control-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  left: 40%;
+  width: 20%;
+  height: 85%;
+}
