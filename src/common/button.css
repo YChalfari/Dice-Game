@@ -1,7 +1,24 @@
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+}
 .btn {
-  width: 100%;
-  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  font-size: 2vmin;
+  line-height: 2rem;
+  height: 5vmin;
   border: none;
   background-color: orangered;
-  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-img {
+  height: 100%;
+  width: 20%;
 }

@@ -13,5 +13,19 @@
   height: 80%;
 }
 .curr-score-wrap {
+  padding: 0 5%;
+  background-color: red;
   justify-self: flex-end;
+}
+h4 {
+  font-size: 1rem;
+}
+.curr-score {
+  font-size: 4rem;
+}
+.score {
+  padding: 0.5rem;
+  font-size: 5rem;
+  font-weight: 300;
+  font-family: cursive;
 }

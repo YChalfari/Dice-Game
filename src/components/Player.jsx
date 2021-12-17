@@ -7,8 +7,10 @@ class Player extends React.Component {
     return (
       <div className="player-card-wrap">
         <div className="player-card">
-          <h2>Player 1</h2>
-          <Score />
+          <div className="player-score-wrap">
+            <h2>{this.props.name}</h2>
+            <Score />
+          </div>
           <CurrentScore />
         </div>
       </div>
