@@ -34,3 +34,20 @@
   border-radius: 8px;
   margin: 1rem 0;
 }
+
+.win-screen {
+  font-family: monospace;
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.win-screen h2 {
+  font-size: 4vmin;
+}
+.win-screen h4 {
+  font-size: 3vmin;
+}
+.win-screen p {
+  font-size: 3vmin;
+}

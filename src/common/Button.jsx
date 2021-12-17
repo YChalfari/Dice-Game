@@ -4,7 +4,11 @@ class Button extends React.Component {
   render() {
     return (
       <div className="btn-wrap">
-        <div onClick={this.props.onClick} className="btn">
+        <div
+          onClick={this.props.onClick}
+          className="btn"
+          // {...this.props.isEnabled}
+        >
           <i className={`fas fa-${this.props.img} `}></i>
           <h3>{this.props.text}</h3>
         </div>
