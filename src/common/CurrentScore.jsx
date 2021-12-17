@@ -5,7 +5,7 @@ class CurrentScore extends React.Component {
     return (
       <div className="curr-score-wrap">
         <h4>current:</h4>
-        <h3 className="curr-score">22</h3>
+        <h3 className="curr-score">{this.props.total}</h3>
       </div>
     );
   }

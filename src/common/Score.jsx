@@ -4,7 +4,7 @@ class Score extends React.Component {
   render() {
     return (
       <div className="score-wrap">
-        <h3 className="score">22</h3>
+        <h3 className="score">{this.props.total}</h3>
       </div>
     );
   }
