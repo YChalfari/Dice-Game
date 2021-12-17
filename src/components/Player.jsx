@@ -4,12 +4,15 @@ import Score from "../common/Score";
 import CurrentScore from "../common/CurrentScore";
 class Player extends React.Component {
   render() {
-    const { currentScore, totalScore } = this.props.data;
+    const { currentScore, totalScore, isActive } = this.props.data;
     return (
       <div className="player-card-wrap">
         <div className="player-card">
           <div className="player-score-wrap">
-            <h2>{this.props.name}</h2>
+            <h2 className="player-name">
+              {this.props.name}
+              <i className={isActive ? "fas fa-angle-left" : undefined}></i>
+            </h2>
             <Score total={totalScore} />
           </div>
           <CurrentScore total={currentScore} />

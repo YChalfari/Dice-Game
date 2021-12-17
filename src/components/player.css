@@ -17,6 +17,15 @@
   background-color: red;
   justify-self: flex-end;
 }
+.player-name {
+  font-weight: 300;
+  font-size: 5vmin;
+}
+.player-name i {
+  font-size: 4vmin;
+  line-height: 100%;
+  color: red;
+}
 h4 {
   font-size: 1rem;
 }
