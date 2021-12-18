@@ -38,3 +38,6 @@ h4 {
   font-weight: 300;
   font-family: cursive;
 }
+.active {
+  background-color: #f4f4f4;
+}

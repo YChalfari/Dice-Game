@@ -6,7 +6,9 @@ class Player extends React.Component {
   render() {
     const { currentScore, totalScore, isActive } = this.props.data;
     return (
-      <div className="player-card-wrap">
+      <div
+        className={isActive ? "player-card-wrap active" : "player-card-wrap"}
+      >
         <div className="player-card">
           <div className="player-score-wrap">
             <h2 className="player-name">

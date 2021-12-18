@@ -27,12 +27,12 @@ class GameBoard extends React.Component {
     ],
   };
 
-  componentDidUpdate() {
-    if (this.state.players[this.state.activePlayer].name === "ai") {
-      this.handleDiceRoll();
-      console.log("updated");
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.players[this.state.activePlayer].name === "ai") {
+  //     this.handleDiceRoll();
+  //     console.log("updated");
+  //   }
+  // }
   updateActivePlayer = (obj) => {
     const activeplayer = this.state.activePlayer;
     const playercount = this.state.players.length;
