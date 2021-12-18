@@ -27,12 +27,16 @@ class GameBoard extends React.Component {
     ],
   };
 
-  // componentDidUpdate() {
-  //   if (this.state.players[this.state.activePlayer].name === "ai") {
-  //     this.handleDiceRoll();
-  //     console.log("updated");
-  //   }
-  // }
+  componentDidUpdate() {
+    if (
+      this.state.players[this.state.activePlayer].name === "ai" &&
+      !this.state.winner
+    ) {
+      setTimeout(() => this.handleDiceRoll(), 500);
+
+      console.log("updated", this.state.players[this.state.activePlayer].name);
+    }
+  }
   updateActivePlayer = (obj) => {
     const activeplayer = this.state.activePlayer;
     const playercount = this.state.players.length;
@@ -86,7 +90,7 @@ class GameBoard extends React.Component {
       player.currentScore + player.totalScore >= pointsToWin &&
         (tempState.winner = true);
     }
-
+    console.log(roll1, roll2);
     return this.setState(tempState);
   };
   handleChange = (e) => {
@@ -121,7 +125,6 @@ class GameBoard extends React.Component {
   render() {
     const { players, activePlayer } = this.state;
     const player = players[activePlayer];
-
     return (
       <div className="game-board">
         <Player name={players[0].name} data={this.state.players[0]} />
