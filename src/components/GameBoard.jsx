@@ -33,8 +33,6 @@ class GameBoard extends React.Component {
       !this.state.winner
     ) {
       setTimeout(() => this.handleDiceRoll(), 500);
-
-      console.log("updated", this.state.players[this.state.activePlayer].name);
     }
   }
   updateActivePlayer = (obj) => {
@@ -90,7 +88,6 @@ class GameBoard extends React.Component {
       player.currentScore + player.totalScore >= pointsToWin &&
         (tempState.winner = true);
     }
-    console.log(roll1, roll2);
     return this.setState(tempState);
   };
   handleChange = (e) => {
