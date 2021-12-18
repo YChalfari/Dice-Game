@@ -16,14 +16,23 @@ class GameBoard extends React.Component {
         isActive: true,
         currentScore: 0,
         totalScore: 0,
+        name: "Player 1",
       },
       {
         isActive: false,
         currentScore: 0,
         totalScore: 0,
+        name: "Player 2",
       },
     ],
   };
+
+  componentDidUpdate() {
+    if (this.state.players[this.state.activePlayer].name === "ai") {
+      this.handleDiceRoll();
+      console.log("updated");
+    }
+  }
   updateActivePlayer = (obj) => {
     const activeplayer = this.state.activePlayer;
     const playercount = this.state.players.length;
@@ -39,14 +48,10 @@ class GameBoard extends React.Component {
     player.isActive = !player.isActive;
     players[newActive].isActive = !players[newActive].isActive;
     tempState.activePlayer = newActive;
-    console.log(tempState);
 
-    return this.setState(
-      (prev) => {
-        return tempState;
-      },
-      () => console.log(this.state)
-    );
+    return this.setState((prev) => {
+      return tempState;
+    });
   };
   updateScore = (player) => {
     player.totalScore += player.currentScore;
@@ -82,13 +87,13 @@ class GameBoard extends React.Component {
         (tempState.winner = true);
     }
 
-    return this.setState(tempState, () => console.log(this.state));
+    return this.setState(tempState);
   };
   handleChange = (e) => {
     this.setState({ pointsToWin: e.target.value });
   };
-  handleNewGame = () => {
-    this.setState({
+  handleNewGame = (id) => {
+    const temp = {
       pointsToWin: 100,
       diceRolls: [null, null],
       activePlayer: 0,
@@ -98,30 +103,39 @@ class GameBoard extends React.Component {
           isActive: true,
           currentScore: 0,
           totalScore: 0,
+          name: "Player 1",
         },
         {
           isActive: false,
           currentScore: 0,
           totalScore: 0,
+          name: "Player 2",
         },
       ],
-    });
+    };
+    if (id === "ai") {
+      temp.players[1].name = id;
+    }
+    this.setState(temp, console.log(temp, this.state));
   };
   render() {
     const { players, activePlayer } = this.state;
     const player = players[activePlayer];
+
     return (
       <div className="game-board">
-        <Player name="Player 1" data={this.state.players[0]} />
+        <Player name={players[0].name} data={this.state.players[0]} />
         <div className="control-panel">
           <Button
             onClick={this.handleNewGame}
             text="New Game"
             img="plus-square"
+            id="new"
           />
+          <Button onClick={this.handleNewGame} text="AI" img="robot" id="ai" />
           {this.state.winner ? (
             <VictoryScreen
-              winner={`Player ${activePlayer + 1}`}
+              winner={player.name}
               score={player.totalScore + player.currentScore}
             />
           ) : (
@@ -135,12 +149,14 @@ class GameBoard extends React.Component {
                   onClick={this.state.winner ? null : this.handleDiceRoll}
                   text="Roll Dice"
                   img="dice"
+                  id="dice"
                   // isEnabled={this.state.winner && "disabled"}
                 />
                 <Button
                   onClick={this.state.winner ? null : this.updateActivePlayer}
                   text="Hold"
                   img="hand-paper"
+                  id="hold"
                   // isEnabled={this.state.winner && "disabled"}
                 />
                 <label htmlFor="limit">Set Score Limit</label>
@@ -155,7 +171,7 @@ class GameBoard extends React.Component {
             </div>
           )}
         </div>
-        <Player name="Player 2" data={this.state.players[1]} />
+        <Player name={players[1].name} data={this.state.players[1]} />
       </div>
     );
   }

@@ -1,11 +1,15 @@
 import React from "react";
 import "./button.css";
 class Button extends React.Component {
+  handleClick(id) {
+    this.props.onClick(id);
+  }
   render() {
     return (
       <div className="btn-wrap">
         <div
-          onClick={this.props.onClick}
+          id={this.props.id}
+          onClick={() => this.handleClick(this.props.id)}
           className="btn"
           // {...this.props.isEnabled}
         >
